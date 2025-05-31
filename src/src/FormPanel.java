@@ -34,7 +34,7 @@ public class FormPanel extends JPanel {
         initFormPanel();
         initComponents();
         initLayout();
-        activateForm();
+        activateFrame();
     }
 
     private void initFormPanel() {
@@ -192,7 +192,8 @@ public class FormPanel extends JPanel {
     }
 
 
-    private void activateForm() {
+    private void activateFrame() {
+
         mainPage.addActionListener(e -> {
             mainFrame.showViewPanel();
         });

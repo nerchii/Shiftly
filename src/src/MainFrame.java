@@ -7,7 +7,7 @@ public class MainFrame extends JFrame {
     private AppMenuBar appMenuBar;
 
     public MainFrame() {
-        super("Shitly");
+        super("Shiftly");
         initMainFrame();
         initComponents();
         initLayout();

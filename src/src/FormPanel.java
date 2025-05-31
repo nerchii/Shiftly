@@ -12,6 +12,7 @@ public class FormPanel extends JPanel {
     private JCheckBox thursday;
     private JCheckBox friday;
     private JCheckBox saturday;
+    private ButtonGroup daysCheckBoxGroup;
 
     private JCheckBox morningShift;
     private JCheckBox afternoonShift;
@@ -26,7 +27,7 @@ public class FormPanel extends JPanel {
     private JButton submitButton;
     private JButton mainPage;
 
-    /// /////////////////////////////////
+    //--------------------------------------------------------
     private MainFrame mainFrame;
     public FormPanel(MainFrame mainFrame){
         this.mainFrame = mainFrame;
@@ -46,29 +47,38 @@ public class FormPanel extends JPanel {
         reminders = new JTextField();
         //listOfWorkers = new JTextArea();
 
+
+        //--------------DANI U TJEDNU-----------------------------------
         monday = new JCheckBox("Monday");
         tuesday = new JCheckBox("Tuesday");
         wednesday = new JCheckBox("Wednesday");
         thursday = new JCheckBox("Thursday");
         friday = new JCheckBox("Friday");
         saturday = new JCheckBox("Saturday");
+        daysCheckBoxGroup = new ButtonGroup();
+        daysCheckBoxGroup.add(monday);daysCheckBoxGroup.add(tuesday);daysCheckBoxGroup.add(wednesday);daysCheckBoxGroup.add(thursday);daysCheckBoxGroup.add(friday);daysCheckBoxGroup.add(saturday);
 
+        //--------------SMJENA-----------------------------------
         morningShift = new JCheckBox(); //jchecchbix je jer se moze vise shitova na dan raditu
         afternoonShift = new JCheckBox();
         evningShift = new JCheckBox();
 
+        //--------------FULLTIME/PARTTIME-----------------------------------
         fullTime = new JRadioButton("Full work time");
         fullTime.setSelected(true); //defaultno selected true
         partTime = new JRadioButton("Partial work time");
         shiftRadioButtonGroup = new ButtonGroup();
-        shiftRadioButtonGroup.add(fullTime);
-        shiftRadioButtonGroup.add(partTime);
+        shiftRadioButtonGroup.add(fullTime);shiftRadioButtonGroup.add(partTime);
 
+        //--------------BR SATI ZA SMJENU-----------------------------------
         partTimeShiftLenght =new JComboBox<>();
         DefaultComboBoxModel<String> comboBoxModel =new DefaultComboBoxModel<>();
         comboBoxModel.addAll(List.of("1 h", "1:30 h", "2 h", "2:30 h", "3 h", "3:30 h", "4 h"));
         partTimeShiftLenght.setModel(comboBoxModel);
         partTimeShiftLenght.setSelectedIndex(-1);
+
+
+
 
         submitButton = new JButton("Submit");
         mainPage = new JButton("Main Page");

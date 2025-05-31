@@ -26,7 +26,6 @@ public class ViewPanel extends JPanel {
         DefaultTableModel tableModel = new DefaultTableModel(days, times){
             @Override
             public boolean isCellEditable(int row, int column) {
-                // Make all cells except day names editable
                 return column != 0;
             }
         };
@@ -35,6 +34,7 @@ public class ViewPanel extends JPanel {
         listOfWorkers = new JTextArea();
         listOfWorkers.setEditable(false);
         scrollPane = new JScrollPane(listOfWorkers,  JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        formPage = new JButton("Shifts");
     }
 
     private void initLayout() {
@@ -51,10 +51,12 @@ public class ViewPanel extends JPanel {
         gbc.gridwidth = 2;
         topPanel.add(new JLabel("Shifts:"), gbc);
         gbc.gridy++;
-
         topPanel.add(shiftScheduleTable, gbc);
+        gbc.gridy++;
+
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
+        topPanel.add(formPage,gbc);
     }
 
 }

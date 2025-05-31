@@ -1,13 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private ViewPanel viewPanel;
     private FormPanel formPanel;  //postavlja se view panel na njega  i mrnu bar
     private AppMenuBar appMenuBar;
+    private ArrayList<Worker> workers;
 
     public MainFrame() {
         super("Shiftly");
+        workers = new ArrayList<>();
         initMainFrame();
         initComponents();
         initLayout();
@@ -15,7 +18,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initMainFrame() {
-        setSize(800,600);
+        setSize(800,700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);  //da je u centru zaslona
         setResizable(false); //da je nemos resajzat
@@ -32,7 +35,7 @@ public class MainFrame extends JFrame {
     private void initLayout() {
         setLayout(new BorderLayout());
         add(viewPanel, BorderLayout.CENTER);
-        add(formPanel, BorderLayout.CENTER);
+        //add(formPanel, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
@@ -46,6 +49,18 @@ public class MainFrame extends JFrame {
         revalidate();
         repaint();
     }
+
+    private void addWorker(Worker worker){
+        if (!workers.contains(worker)){
+            workers.add(worker);
+            JOptionPane.showMessageDialog(this, "Worker added to the list", null, JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Worker already exists", "info", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+
 }
 
 

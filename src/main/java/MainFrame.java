@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
 
     private void initLayout() {
         setLayout(new BorderLayout());
-        add(viewPanel, BorderLayout.CENTER);
+        add(formPanel, BorderLayout.CENTER);
         //add(formPanel, BorderLayout.CENTER);
         revalidate();
         repaint();

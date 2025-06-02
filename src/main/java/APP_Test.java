@@ -8,9 +8,8 @@ import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme;
 
 public class APP_Test {
     public static void main(String[] args) {
-        //FlatLaf.setup(new FlatLightLaf());
-        FlatLaf.setup(new FlatArcDarkOrangeIJTheme());
-        FlatLaf.setup(new FlatDarculaLaf());
+        FlatLaf.setup(new FlatLightLaf());
+       // FlatLaf.setup(new FlatArcDarkOrangeIJTheme());
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override

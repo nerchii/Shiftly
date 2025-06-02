@@ -4,47 +4,76 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Koncept projekta - ShiftPlaner.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Shiftly.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/APP_Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/AppMenuBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/FormPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/MainFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/ViewPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/Worker.java" beforeDir="false" />
+    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="add maven">
+      <change afterPath="$PROJECT_DIR$/src/main/java/AUX_CLS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/FormPanelListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MenuBarListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Shift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/APP_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FormPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FormPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/APP_Test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/APP_Test$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/APP_Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/APP_Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AppMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AppMenuBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FormPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FormPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ViewPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Worker.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2xuVpGajKdyZSt5YZHFh9CGSvz2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.APP_Test.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.APP_Test.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="APP_Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="APP_Test" />
+      <module name="Shiftly" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.APP_Test" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="" />
@@ -53,6 +82,19 @@
       <option name="presentableId" value="Default" />
       <updated>1748788128865</updated>
     </task>
+    <task id="LOCAL-00001" summary="add maven">
+      <option name="closed" value="true" />
+      <created>1748788989433</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748788989433</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add maven" />
+    <option name="LAST_COMMIT_MESSAGE" value="add maven" />
   </component>
 </project>

@@ -1,29 +1,39 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Worker implements Serializable {
     private String name;
     private String reminders;
-    private ArrayList<String> daysWorking;
-    private ArrayList<String> shift;
-    private boolean fullTime;
+    private List<Shift> shifts;
 
-    public Worker(String name, String reminders, ArrayList<String> daysWorking, ArrayList<String> shift, boolean fullTime){
+    public Worker(String name, String reminders, List<Shift> shifts){
         this.name= name;
         this.reminders = reminders;
-        this.daysWorking = daysWorking;
-        this.shift = shift;
-        this.fullTime = fullTime;
+        this.shifts = shifts;
     }
 
-    @Override
-    public String toString() {
-        return "Worker{" +
-                "name='" + name + '\'' +
-                ", reminders='" + reminders + '\'' +
-                ", daysWorking=" + daysWorking +
-                ", shift=" + shift +
-                ", fullTime=" + fullTime +
-                '}';
+    public List<Shift> getShifts() {
+        return shifts;
+    }
+
+    public void setShifts(List<Shift> shifts) {
+        this.shifts = shifts;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setReminders(String reminders) {
+        this.reminders = reminders;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getReminders() {
+        return reminders;
     }
 }

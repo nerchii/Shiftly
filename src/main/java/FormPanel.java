@@ -1,18 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FormPanel extends JPanel {
     private JTextField nameField;
     private JTextField reminders;
 
-    private JCheckBox monday;
-    private JCheckBox tuesday;
-    private JCheckBox wednesday;
-    private JCheckBox thursday;
-    private JCheckBox friday;
-    private JCheckBox saturday;
-    private ButtonGroup daysCheckBoxGroup;
+    private JRadioButton monday;
+    private JRadioButton tuesday;
+    private JRadioButton wednesday;
+    private JRadioButton thursday;
+    private JRadioButton friday;
+    private JRadioButton saturday;
+    private ButtonGroup dayRadioButtonGroup;
 
     private JCheckBox morningShift;
     private JCheckBox afternoonShift;
@@ -25,21 +26,22 @@ public class FormPanel extends JPanel {
     private JComboBox<String> partTimeShiftLenght;
     private JScrollPane listScrollPane; //scrollbar
     private JButton submitButton;
-    private JButton mainPage;
 
-    //--------------------------------------------------------
-    private MainFrame mainFrame;
-    public FormPanel(MainFrame mainFrame){
-        this.mainFrame = mainFrame;
+    private FormPanelListener formPanelListener;
+
+    public FormPanel() {
         initFormPanel();
         initComponents();
         initLayout();
-        activateFrame();
+        activateForm();
+    }
+
+    public void setFormPanelListener(FormPanelListener formPanelListener) {
+        this.formPanelListener = formPanelListener;
     }
 
     private void initFormPanel() {
-        setPreferredSize(new Dimension(400,300));
-        //Border innerBorder = BorderFactory.
+        setPreferredSize(new Dimension(400, 300));
     }
 
     private void initComponents() {
@@ -49,14 +51,19 @@ public class FormPanel extends JPanel {
 
 
         //--------------DANI U TJEDNU-----------------------------------
-        monday = new JCheckBox("Monday");
-        tuesday = new JCheckBox("Tuesday");
-        wednesday = new JCheckBox("Wednesday");
-        thursday = new JCheckBox("Thursday");
-        friday = new JCheckBox("Friday");
-        saturday = new JCheckBox("Saturday");
-        daysCheckBoxGroup = new ButtonGroup();
-        daysCheckBoxGroup.add(monday);daysCheckBoxGroup.add(tuesday);daysCheckBoxGroup.add(wednesday);daysCheckBoxGroup.add(thursday);daysCheckBoxGroup.add(friday);daysCheckBoxGroup.add(saturday);
+        monday = new JRadioButton("Monday");
+        tuesday = new JRadioButton("Tuesday");
+        wednesday = new JRadioButton("Wednesday");
+        thursday = new JRadioButton("Thursday");
+        friday = new JRadioButton("Friday");
+        saturday = new JRadioButton("Saturday");
+        dayRadioButtonGroup = new ButtonGroup();
+        dayRadioButtonGroup.add(monday);
+        dayRadioButtonGroup.add(tuesday);
+        dayRadioButtonGroup.add(wednesday);
+        dayRadioButtonGroup.add(thursday);
+        dayRadioButtonGroup.add(friday);
+        dayRadioButtonGroup.add(saturday);
 
         //--------------SMJENA-----------------------------------
         morningShift = new JCheckBox(); //jchecchbix je jer se moze vise shitova na dan raditu
@@ -68,20 +75,18 @@ public class FormPanel extends JPanel {
         fullTime.setSelected(true); //defaultno selected true
         partTime = new JRadioButton("Partial work time");
         shiftRadioButtonGroup = new ButtonGroup();
-        shiftRadioButtonGroup.add(fullTime);shiftRadioButtonGroup.add(partTime);
+        shiftRadioButtonGroup.add(fullTime);
+        shiftRadioButtonGroup.add(partTime);
 
         //--------------BR SATI ZA SMJENU-----------------------------------
-        partTimeShiftLenght =new JComboBox<>();
-        DefaultComboBoxModel<String> comboBoxModel =new DefaultComboBoxModel<>();
+        partTimeShiftLenght = new JComboBox<>();
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         comboBoxModel.addAll(List.of("1 h", "1:30 h", "2 h", "2:30 h", "3 h", "3:30 h", "4 h"));
         partTimeShiftLenght.setModel(comboBoxModel);
         partTimeShiftLenght.setSelectedIndex(-1);
 
 
-
-
         submitButton = new JButton("Submit");
-        mainPage = new JButton("Main Page");
     }
 
     private void initLayout() {
@@ -188,14 +193,61 @@ public class FormPanel extends JPanel {
         add(submitButton, gbc);
 
         gbc.gridx++;
-        add(mainPage, gbc);
     }
 
+    private int getSelectedDay() {
+        int day = -1;
+        if (monday.isSelected()) day = 0;
+        if (tuesday.isSelected()) day = 1;
+        if (wednesday.isSelected()) day = 2;
+        if (thursday.isSelected()) day = 3;
+        if (friday.isSelected()) day = 4;
+        if (saturday.isSelected()) day = 5;
+        return day;
+    }
 
-    private void activateFrame() {
+    private ArrayList<Integer> getSelectedShifts() {
+        ArrayList<Integer> shifts = new ArrayList<>();
+        if (morningShift.isSelected()) shifts.add(0);
+        if (afternoonShift.isSelected()) shifts.add(1);
+        if (evningShift.isSelected()) shifts.add(2);
+        return shifts;
+    }
 
-        mainPage.addActionListener(e -> {
-            mainFrame.showViewPanel();
+    private void activateForm() {
+        submitButton.addActionListener(actionEvent -> {
+            String name = nameField.getText();
+            if (name.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter the worker's name", "Required", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            String notes = reminders.getText();
+
+            int day = getSelectedDay();
+            if (day == -1) {
+                JOptionPane.showMessageDialog(this, "Please select day", "Required", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            ArrayList<Integer> times = getSelectedShifts();
+            if (times.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter at least ine shift", "Required", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            ArrayList<Shift> shifts = new ArrayList<>();
+            for (int time : times) {
+                Shift shift = new Shift(1, time);
+                shifts.add(shift);
+            }
+
+            Worker worker = new Worker(name, notes, shifts);
+            if (formPanelListener != null) {
+                formPanelListener.formPanelEventOccurred(worker);
+            } else {
+                JOptionPane.showMessageDialog(this, "FormPanelListener is null", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }

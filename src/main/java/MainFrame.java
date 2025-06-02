@@ -1,12 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame extends JFrame {
     private ViewPanel viewPanel;
     private FormPanel formPanel;  //postavlja se view panel na njega  i mrnu bar
     private AppMenuBar appMenuBar;
+    private JPanel currentScreen;
     private ArrayList<Worker> workers;
+
 
     public MainFrame() {
         super("Shiftly");
@@ -18,7 +21,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initMainFrame() {
-        setSize(800,700);
+        setSize(800, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);  //da je u centru zaslona
         setResizable(false); //da je nemos resajzat
@@ -27,37 +30,73 @@ public class MainFrame extends JFrame {
 
     private void initComponents() {
         viewPanel = new ViewPanel();
-        formPanel = new FormPanel(this);
-        appMenuBar = new AppMenuBar();
+        formPanel = new FormPanel();
+        appMenuBar = new AppMenuBar(this);
+        setJMenuBar(appMenuBar);
+        currentScreen = formPanel;
 
     }
 
     private void initLayout() {
         setLayout(new BorderLayout());
-        add(formPanel, BorderLayout.CENTER);
-        //add(formPanel, BorderLayout.CENTER);
-        revalidate();
-        repaint();
+        add(currentScreen, BorderLayout.CENTER);
     }
 
     private void activateFrame() {
+        formPanel.setFormPanelListener(new FormPanelListener() {
+            @Override
+            public void formPanelEventOccurred(Worker worker) {
+                addWorker(worker);
+                showViewPanel();
+            }
+        });
+        appMenuBar.setMenuBarListener(new MenuBarListener() {
+            @Override
+            public void menuBarEventOccurred(String actionCommand) {
+                if (actionCommand.equals("exit")) {
+                    System.exit(0);
+                } else if (actionCommand.equals("viewPanel")) {
+                    showViewPanel();
+                } else if (actionCommand.equals("formPanel")) {
+                    showFormPanel();
+                } else if (actionCommand.equals("saveToFile")) {
+                    AUX_CLS.writeToFile(workers,"./DATA/data.json" );
+                } else if (actionCommand.equals("readFromFile")) {
+                    workers = AUX_CLS.readFromFile("./DATA/data.json" );
+                    showViewPanel();
+                }
+            }
+        });
     }
 
-    protected void showViewPanel(){
-        getContentPane().removeAll();
-        add(viewPanel, BorderLayout.CENTER);
+    private void showViewPanel() {
+        getContentPane().remove(currentScreen);
+        currentScreen = viewPanel;
+        viewPanel.updateData(workers);
+        add(currentScreen, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
 
-    private void addWorker(Worker worker){
-        if (!workers.contains(worker)){
-            workers.add(worker);
-            JOptionPane.showMessageDialog(this, "Worker added to the list", null, JOptionPane.INFORMATION_MESSAGE);
+    private void showFormPanel() {
+        getContentPane().remove(currentScreen);
+        currentScreen = formPanel;
+        add(currentScreen, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    private void addWorker(Worker worker) {
+        for (Worker w : workers) {
+            if (w.getName().equals(worker.getName())) {
+                w.setShifts(worker.getShifts());
+                w.setReminders(worker.getReminders());
+                JOptionPane.showMessageDialog(this, "Worker updated", null, JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
         }
-        else {
-            JOptionPane.showMessageDialog(this, "Worker already exists", "info", JOptionPane.WARNING_MESSAGE);
-        }
+        workers.add(worker);
+        JOptionPane.showMessageDialog(this, "New worker added", null, JOptionPane.INFORMATION_MESSAGE);
     }
 
 

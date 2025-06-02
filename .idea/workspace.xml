@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="add maven">
-      <change afterPath="$PROJECT_DIR$/src/main/java/AUX_CLS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FormPanelListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MenuBarListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Shift.java" afterDir="false" />
+    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="Big update">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/APP_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/APP_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FormPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FormPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/APP_Test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/APP_Test$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/APP_Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/APP_Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AppMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AppMenuBar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/FormPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FormPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" afterDir="false" />
@@ -90,11 +81,20 @@
       <option name="project" value="LOCAL" />
       <updated>1748788989433</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Big update">
+      <option name="closed" value="true" />
+      <created>1748889370341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748889370341</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="add maven" />
+    <MESSAGE value="Big update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Big update" />
   </component>
 </project>

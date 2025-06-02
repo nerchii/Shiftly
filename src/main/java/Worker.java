@@ -36,4 +36,8 @@ public class Worker implements Serializable {
     public String getReminders() {
         return reminders;
     }
+
+    public void addShifts(List<Shift> shifts) {
+        this.shifts.addAll(shifts);
+    }
 }

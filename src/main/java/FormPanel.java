@@ -19,10 +19,6 @@ public class FormPanel extends JPanel {
     private JCheckBox afternoonShift;
     private JCheckBox evningShift;
 
-    private JRadioButton fullTime;
-    private JRadioButton partTime;
-    private ButtonGroup shiftRadioButtonGroup;
-
     private JComboBox<String> partTimeShiftLenght;
     private JScrollPane listScrollPane; //scrollbar
     private JButton submitButton;
@@ -69,14 +65,6 @@ public class FormPanel extends JPanel {
         morningShift = new JCheckBox(); //jchecchbix je jer se moze vise shitova na dan raditu
         afternoonShift = new JCheckBox();
         evningShift = new JCheckBox();
-
-        //--------------FULLTIME/PARTTIME-----------------------------------
-        fullTime = new JRadioButton("Full work time");
-        fullTime.setSelected(true); //defaultno selected true
-        partTime = new JRadioButton("Partial work time");
-        shiftRadioButtonGroup = new ButtonGroup();
-        shiftRadioButtonGroup.add(fullTime);
-        shiftRadioButtonGroup.add(partTime);
 
         //--------------BR SATI ZA SMJENU-----------------------------------
         partTimeShiftLenght = new JComboBox<>();
@@ -146,21 +134,8 @@ public class FormPanel extends JPanel {
         evningShift.setText("Evening");
         add(evningShift, gbc);
 
-        // 4. Work time type (horizontal)
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        add(new JLabel("Work time type:"), gbc);
-        gbc.gridy++;
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        add(fullTime, gbc);
-        gbc.gridx = 1;
-        add(partTime, gbc);
-
         // 5. Part-time duration
         gbc.gridy++;
-        gbc.gridx = 0;
         gbc.gridwidth = 2;
         add(new JLabel("Part-time duration:"), gbc);
         gbc.gridy++;
@@ -238,7 +213,7 @@ public class FormPanel extends JPanel {
 
             ArrayList<Shift> shifts = new ArrayList<>();
             for (int time : times) {
-                Shift shift = new Shift(1, time);
+                Shift shift = new Shift(time, day);
                 shifts.add(shift);
             }
 

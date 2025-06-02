@@ -46,8 +46,8 @@ public class MainFrame extends JFrame {
         formPanel.setFormPanelListener(new FormPanelListener() {
             @Override
             public void formPanelEventOccurred(Worker worker) {
-                addWorker(worker);
-                showViewPanel();
+                boolean addedSuccessfully = addWorker(worker);
+                if (addedSuccessfully) showViewPanel();
             }
         });
         appMenuBar.setMenuBarListener(new MenuBarListener() {
@@ -86,17 +86,34 @@ public class MainFrame extends JFrame {
         repaint();
     }
 
-    private void addWorker(Worker worker) {
+    // Returns true if shift is in conflict
+    private boolean checkConflicts(Worker w1, Worker w2) {
+        for (Shift shift1 : w1.getShifts()) {
+            for (Shift shift2 : w2.getShifts()) {
+                if (shift2.getDay() == shift1.getDay() && shift2.getTime() == shift1.getTime()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean addWorker(Worker worker) {
         for (Worker w : workers) {
+            if (checkConflicts(w, worker)) {
+                JOptionPane.showMessageDialog(this, "CONFLICTS!");
+                return false;
+            }
             if (w.getName().equals(worker.getName())) {
-                w.setShifts(worker.getShifts());
+                w.addShifts(worker.getShifts());
                 w.setReminders(worker.getReminders());
                 JOptionPane.showMessageDialog(this, "Worker updated", null, JOptionPane.INFORMATION_MESSAGE);
-                return;
+                return true;
             }
         }
         workers.add(worker);
         JOptionPane.showMessageDialog(this, "New worker added", null, JOptionPane.INFORMATION_MESSAGE);
+        return true;
     }
 
 

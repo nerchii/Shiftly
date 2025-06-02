@@ -18,35 +18,29 @@ public class ViewPanel extends JPanel {
     }
 
     public void updateData(List<Worker> workers) {
-        listOfWorkers.setText(workers.toString());
+        String workersStr = "";
+        for (Worker w : workers) {
+            workersStr += w.getName() + "\n";
+        }
 
-//        shiftScheduleTable.setValueAt("wdasd", 3, 2);
+        listOfWorkers.setText(workersStr);
+
         for (Worker worker : workers) {
-//            for (int day : worker.getDaysWorkingNumbers()) {
-//                for (String shift : worker.getShift()) {
-//                    if (shift.equalsIgnoreCase("evening")) {
-//                        shiftScheduleTable.setValueAt(worker.getName(), day, 4);
-//                        shiftScheduleTable.setValueAt(worker.getName(), day, 5);
-//                    } else if (shift.equalsIgnoreCase("afternoon")) {
-//                        shiftScheduleTable.setValueAt(worker.getName(), day, 2);
-//                        shiftScheduleTable.setValueAt(worker.getName(), day, 3);
-//                    } else if (shift.equalsIgnoreCase("morning")) {
-//                        shiftScheduleTable.setValueAt(worker.getName(), day, 1);
-//                    }
-//                }
-//            }
+            for (Shift shift : worker.getShifts()) {
+                shiftScheduleTable.setValueAt(worker.getName(), shift.getDay(), shift.getTime() + 1);
+            }
         }
     }
 
     private void initComponents() {
-        String[] times = {"Day", "8:00", "9:00", "12:00", "16:00", "22:00"};
+        String[] times = {"Day", "8:00 - 9:00", "12:00 - 16:00", "21:00 - 22:00"};
         Object[][] days = {
-                {"Monday", "", "", "", "", ""},
-                {"Tuesday", "", "", "", "", ""},
-                {"Wednesday", "", "", "", "", ""},
-                {"Thursday", "", "", "", "", ""},
-                {"Friday", "", "", "", "", ""},
-                {"Saturday", "", "", "", "", ""}
+                {"Monday", "", "", ""},
+                {"Tuesday", "", "", ""},
+                {"Wednesday", "", "", ""},
+                {"Thursday", "", "", ""},
+                {"Friday", "", "", ""},
+                {"Saturday", "", "", ""}
         };
         DefaultTableModel tableModel = new DefaultTableModel(days, times) {
             @Override

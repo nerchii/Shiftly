@@ -3,12 +3,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AppMenuBar extends JMenuBar implements ActionListener {
-    private JMenu fileMenu;
+    private JMenu fileMenu;  //za saveanje u bin i json
+    private JMenu jsonMenu;
+    private JMenu binMenu;
+
     private JMenu viewMenu;
 
-    private JMenuItem openFromFile;
-    private JMenuItem saveToFile;
-    private JMenuItem exit;
+    private JMenuItem openFromJSONFile;
+    private JMenuItem saveToJSONFile;
+    private JMenuItem openFromBinFile;
+    private JMenuItem saveToBinFile;
 
     private JMenuItem mainPage;
     private JMenuItem scheduleView;
@@ -25,9 +29,13 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 
     private void initCompoments() {
         fileMenu = new JMenu("Files");
-        openFromFile = new JMenuItem("Open");
-        saveToFile = new JMenuItem("Save");
-        exit = new JMenuItem("Exit");
+        jsonMenu = new JMenu("JSON");
+        binMenu = new JMenu("BIN");
+
+        openFromJSONFile = new JMenuItem("Open from JSON");
+        saveToJSONFile = new JMenuItem("Save to JSON");
+        openFromBinFile = new JMenuItem("Open from Bin");
+        saveToBinFile = new JMenuItem("Save to Bin");
 
         viewMenu = new JMenu("View");
         mainPage = new JMenuItem("Main page");
@@ -36,17 +44,20 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
         add(fileMenu);
         add(viewMenu);
 
-//        // Dodaj ikone ako želiš
-//        openFromFile.setIcon(new ImageIcon("icons/open.png"));
-//        saveToFile.setIcon(new ImageIcon("icons/save.png"));
     }
 
     private void activateMenuBar() {
-        openFromFile.addActionListener(this);
-        openFromFile.setActionCommand("readFromFile");
-        saveToFile.addActionListener(this);
-        saveToFile.setActionCommand("saveToFile");
-        exit.addActionListener(this);
+        openFromJSONFile.addActionListener(this);
+        openFromJSONFile.setActionCommand("readFromJsonFile");
+        saveToJSONFile.addActionListener(this);
+        saveToJSONFile.setActionCommand("saveToJsonFile");
+
+        openFromBinFile.addActionListener(this);
+        openFromBinFile.setActionCommand("readFromBinFile");
+        saveToBinFile.addActionListener(this);
+        saveToBinFile.setActionCommand("saveToBinFile");
+
+
         mainPage.addActionListener(this);
         mainPage.setActionCommand("viewPanel");
         scheduleView.addActionListener(this);
@@ -54,10 +65,16 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
     }
 
     private void layoutComponents() {
-        fileMenu.add(openFromFile);
-        fileMenu.add(saveToFile);
-        fileMenu.addSeparator();
-        fileMenu.add(exit);
+        fileMenu.add(jsonMenu);
+        fileMenu.add(binMenu);
+
+        jsonMenu.add(openFromJSONFile);
+        jsonMenu.add(saveToJSONFile);
+        binMenu.add(openFromBinFile);
+        binMenu.add(saveToBinFile);
+
+        //fileMenu.addSeparator();
+
         viewMenu.add(mainPage);
         viewMenu.add(scheduleView);
 

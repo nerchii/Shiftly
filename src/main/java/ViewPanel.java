@@ -19,6 +19,7 @@ public class ViewPanel extends JPanel {
         for (Worker w : workers) {
             workersStr += "Name: " + w.getName() + "\n"
                     + "Reminders: " + w.getReminders() + "\n"
+                    + "Task: " + w.getTask() + "\n"
                     + "Shifts:\n";
             for (Shift shift : w.getShifts()) {
                 workersStr += "  - " + shift.toString() + "\n";
@@ -48,7 +49,7 @@ public class ViewPanel extends JPanel {
         DefaultTableModel tableModel = new DefaultTableModel(days, times) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false;  //da se tablica ne moze mjenjati
+                return false;
             }
         };
 

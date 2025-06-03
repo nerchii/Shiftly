@@ -194,6 +194,10 @@ public class FormPanel extends JPanel {
         return shifts;
     }
 
+    private String getSelectedTask() {
+        return task.getSelectedItem().toString();
+    }
+
     private void activateForm() {
         submitButton.addActionListener(actionEvent -> {
             String name = nameField.getText();
@@ -203,6 +207,7 @@ public class FormPanel extends JPanel {
             }
 
             String notes = reminders.getText();
+            String task = getSelectedTask();
 
             int day = getSelectedDay();
             if (day == -1) {
@@ -222,7 +227,7 @@ public class FormPanel extends JPanel {
                 shifts.add(shift);
             }
 
-            Worker worker = new Worker(name, notes, shifts);
+            Worker worker = new Worker(name, notes, shifts, task);
             if (formPanelListener != null) {
                 formPanelListener.formPanelEventOccurred(worker);
             } else {

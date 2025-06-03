@@ -8,7 +8,7 @@ public class Worker implements Serializable {
     private List<Shift> shifts;
     private String task;
 
-    public Worker(String name, String reminders, List<Shift> shifts){
+    public Worker(String name, String reminders, List<Shift> shifts, String task){
         this.name= name;
         this.reminders = reminders;
         this.shifts = shifts;

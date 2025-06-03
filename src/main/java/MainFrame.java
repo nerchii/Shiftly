@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super("Shiftly");
-        workers = AUX_CLS.readFromFile("./DATA/data.json");
+        workers = AUX_CLS.readFromJSONFile("./DATA/data.json");
         initMainFrame();
         initComponents();
         initLayout();
@@ -61,11 +61,19 @@ public class MainFrame extends JFrame {
                     showViewPanel();
                 } else if (actionCommand.equals("formPanel")) {
                     showFormPanel();
-                } else if (actionCommand.equals("saveToFile")) {
-                    AUX_CLS.writeToFile(workers,"./DATA/data.json" );
-                } else if (actionCommand.equals("readFromFile")) {
-                    workers = AUX_CLS.readFromFile("./DATA/data.json" );
+                } else if (actionCommand.equals("saveToJsonFile")) {
+                    AUX_CLS.writeToJSONFile(workers,"./DATA/data.json" );
+
+                } else if (actionCommand.equals("readFromJsonFile")) {
+                    workers = AUX_CLS.readFromJSONFile("./DATA/data.json" );
                     showViewPanel();
+
+//                }else if (actionCommand.equals("saveToBinFile")) {
+//                    AUX_CLS.writeToBinFile(workers,"./DATA/data.bin" );
+//                }
+//                else if (actionCommand.equals("readFromBinFile")) {
+//                    workers = AUX_CLS.readFromBinFile("./DATA/data.bin" );
+//                    showViewPanel();
                 }
             }
         });

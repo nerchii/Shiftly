@@ -5,27 +5,28 @@ import java.util.List;
 
 public class MainFrame extends JFrame {
     private ViewPanel viewPanel;
-    private FormPanel formPanel;  //postavlja se view panel na njega  i mrnu bar
+    private FormPanel formPanel;
     private AppMenuBar appMenuBar;
     private JPanel currentScreen;
     private ArrayList<Worker> workers;
 
-
     public MainFrame() {
         super("Shiftly");
-        workers = new ArrayList<>();
+        workers = AUX_CLS.readFromFile("./DATA/data.json");
         initMainFrame();
         initComponents();
         initLayout();
         activateFrame();
+        setIconImage(new ImageIcon("src/main/resources/icon.png").getImage());
+
     }
 
     private void initMainFrame() {
         setSize(800, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);  //da je u centru zaslona
-        setResizable(false); //da je nemos resajzat
-        setVisible(true);  //da je window visible
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setVisible(true);
     }
 
     private void initComponents() {
@@ -33,7 +34,8 @@ public class MainFrame extends JFrame {
         formPanel = new FormPanel();
         appMenuBar = new AppMenuBar(this);
         setJMenuBar(appMenuBar);
-        currentScreen = formPanel;
+        currentScreen = viewPanel;
+        viewPanel.updateData(workers);
 
     }
 
@@ -98,10 +100,27 @@ public class MainFrame extends JFrame {
         return false;
     }
 
+    private List<Shift> getConflictingShifts(Worker w1, Worker w2) {
+        List<Shift> conflicts = new ArrayList<>();
+        for (Shift shift1 : w1.getShifts()) {
+            for (Shift shift2 : w2.getShifts()) {
+                if (shift1.getDay() == shift2.getDay() && shift1.getTime() == shift2.getTime()) {
+                    conflicts.add(shift1);
+                }
+            }
+        }
+        return conflicts;
+    }
+
     private boolean addWorker(Worker worker) {
         for (Worker w : workers) {
-            if (checkConflicts(w, worker)) {
-                JOptionPane.showMessageDialog(this, "CONFLICTS!");
+            List<Shift> conflicts = getConflictingShifts(w, worker);
+            if (!conflicts.isEmpty()) {
+                StringBuilder conflictMsg = new StringBuilder("Conflict with worker: " + w.getName() + "\n");
+                for (Shift s : conflicts) {
+                    conflictMsg.append("- ").append(s.toString()).append("\n");
+                }
+                JOptionPane.showMessageDialog(this, conflictMsg.toString(), "Shift Conflict", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
             if (w.getName().equals(worker.getName())) {
@@ -115,8 +134,6 @@ public class MainFrame extends JFrame {
         JOptionPane.showMessageDialog(this, "New worker added", null, JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
-
-
 }
 
 

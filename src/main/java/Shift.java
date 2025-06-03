@@ -14,4 +14,12 @@ public class Shift {
     public int getTime() {
         return time;
     }
+
+    @Override
+    public String toString() {
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        String[] times = {"8:00 - 12:30", "12:30 - 17:00", "17:00 - 22:00"};
+
+        return "Day: " + days[day] + ", Time: " + times[time];
+    }
 }

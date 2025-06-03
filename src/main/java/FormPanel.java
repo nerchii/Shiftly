@@ -19,7 +19,7 @@ public class FormPanel extends JPanel {
     private JCheckBox afternoonShift;
     private JCheckBox evningShift;
 
-    private JComboBox<String> partTimeShiftLenght;
+    private JComboBox<String> task;
     private JScrollPane listScrollPane; //scrollbar
     private JButton submitButton;
 
@@ -43,7 +43,6 @@ public class FormPanel extends JPanel {
     private void initComponents() {
         nameField = new JTextField(20); //collumns- broj znakova koji ce se vidit
         reminders = new JTextField();
-        //listOfWorkers = new JTextArea();
 
 
         //--------------DANI U TJEDNU-----------------------------------
@@ -66,12 +65,12 @@ public class FormPanel extends JPanel {
         afternoonShift = new JCheckBox();
         evningShift = new JCheckBox();
 
-        //--------------BR SATI ZA SMJENU-----------------------------------
-        partTimeShiftLenght = new JComboBox<>();
+        //--------------odabir zdatka-----------------------------------
+        task = new JComboBox<>();
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-        comboBoxModel.addAll(List.of("1 h", "1:30 h", "2 h", "2:30 h", "3 h", "3:30 h", "4 h"));
-        partTimeShiftLenght.setModel(comboBoxModel);
-        partTimeShiftLenght.setSelectedIndex(-1);
+        comboBoxModel.addAll(List.of("task 1.", "task 2.", "task 3.", "task 4."));
+        task.setModel(comboBoxModel);
+        task.setSelectedIndex(-1);
 
 
         submitButton = new JButton("Submit");
@@ -134,12 +133,18 @@ public class FormPanel extends JPanel {
         evningShift.setText("Evening");
         add(evningShift, gbc);
 
-        // 5. Part-time duration
-        gbc.gridy++;
+        // 5. Task
+        gbc.gridy = 9; // labela Task na red 9
         gbc.gridwidth = 2;
-        add(new JLabel("Part-time duration:"), gbc);
-        gbc.gridy++;
-        add(partTimeShiftLenght, gbc);
+        add(new JLabel("Task:"), gbc);
+
+        gbc.gridy = 10; // combo box odmah ispod, red 10
+        gbc.weightx = 2.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(task, gbc);
+
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
 
         // 6. Right column – Reminders
         GridBagConstraints gbcRight = new GridBagConstraints();

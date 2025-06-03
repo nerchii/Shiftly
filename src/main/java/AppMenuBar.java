@@ -31,7 +31,7 @@ public class AppMenuBar extends JMenuBar implements ActionListener {
 
         viewMenu = new JMenu("View");
         mainPage = new JMenuItem("Main page");
-        scheduleView = new JMenuItem("Shift schedule");
+        scheduleView = new JMenuItem("Add shift");
 
         add(fileMenu);
         add(viewMenu);

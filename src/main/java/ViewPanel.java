@@ -1,33 +1,55 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPanel extends JPanel {
     private JTextArea listOfWorkers;
     private JTable shiftScheduleTable;
     private JScrollPane scrollPane;
+    private List<Worker> workers;
 
     public ViewPanel() {
         initComponents();
         initLayout();
         activateFrame();
+        workers = new ArrayList<>();
     }
 
-    public void updateData(List<Worker> workers) {
+    public void setWorkers(List<Worker> workers) {
+        this.workers = workers;
+        redrawUI();
+    }
+
+    private void redrawUI() {
         String workersStr = "";
         for (Worker w : workers) {
-            workersStr += "Name: " + w.getName() + "\n"
-                    + "Reminders: " + w.getReminders() + "\n"
-                    + "Task: " + w.getTask() + "\n"
-                    + "Shifts:\n";
-            for (Shift shift : w.getShifts()) {
-                workersStr += "  - " + shift.toString() + "\n";
+            if (w.getShifts().size()>=1){
+                workersStr += "Name: " + w.getName() + "\n"
+                        + "Reminders: " + w.getReminders() + "\n"
+                        + "Task: " + w.getTask() + "\n"
+                        + "Shifts:\n";
+                for (Shift shift : w.getShifts()) {
+                    workersStr += "  - " + shift.toString() + "\n";
+                }
+                workersStr += "\n";
             }
-            workersStr += "\n";
+
         }
 
         listOfWorkers.setText(workersStr);
+
+        for (int row = 0; row < shiftScheduleTable.getRowCount(); row++) {
+            for (int col = 1; col < shiftScheduleTable.getColumnCount(); col++) {
+                shiftScheduleTable.setValueAt("", row, col);
+            }
+        }
 
         for (Worker worker : workers) {
             for (Shift shift : worker.getShifts()) {
@@ -77,6 +99,27 @@ public class ViewPanel extends JPanel {
     }
 
     private void activateFrame() {
+        shiftScheduleTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = shiftScheduleTable.getSelectedRow();
+                int col = shiftScheduleTable.getSelectedColumn();
 
+                String workerName = (String) shiftScheduleTable.getValueAt(row, col);
+                for (Worker worker: workers) {
+                    if (workerName.equals(worker.getName())) {
+                        Shift shiftToRemove = null;
+                        for (Shift shift : worker.getShifts()) {
+                            if (shift.getDay() == row && shift.getTime() == (col - 1)) {
+                                shiftToRemove = shift;
+                                break;
+                            }
+                        }
+                        worker.getShifts().remove(shiftToRemove);
+                    }
+                }
+                redrawUI();
+            }
+        });
     }
 }

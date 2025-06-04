@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="add tasks">
+    <list default="true" id="35e4ed08-5afe-4e1a-a1ee-0e86ab01dda4" name="Changes" comment="add save to bin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DATA/data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/DATA/data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DATA/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AUX_CLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AUX_CLS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AppMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FormPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FormPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AppMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AppMenuBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FormPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FormPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ViewPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ViewPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Worker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Worker.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +40,9 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -81,6 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748788128865</updated>
+      <workItem from="1748958193846" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="add maven">
       <option name="closed" value="true" />
@@ -114,14 +105,26 @@
       <option name="project" value="LOCAL" />
       <updated>1748939128370</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add save to bin">
+      <option name="closed" value="true" />
+      <created>1748944125602</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748944125602</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add maven" />
     <MESSAGE value="Big update" />
     <MESSAGE value="Small update" />
     <MESSAGE value="add tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tasks" />
+    <MESSAGE value="add save to bin" />
+    <option name="LAST_COMMIT_MESSAGE" value="add save to bin" />
   </component>
 </project>

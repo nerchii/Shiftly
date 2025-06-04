@@ -35,8 +35,7 @@ public class MainFrame extends JFrame {
         appMenuBar = new AppMenuBar(this);
         setJMenuBar(appMenuBar);
         currentScreen = viewPanel;
-        viewPanel.updateData(workers);
-
+        viewPanel.setWorkers(workers);
     }
 
     private void initLayout() {
@@ -82,7 +81,7 @@ public class MainFrame extends JFrame {
     private void showViewPanel() {
         getContentPane().remove(currentScreen);
         currentScreen = viewPanel;
-        viewPanel.updateData(workers);
+        viewPanel.setWorkers(workers);
         add(currentScreen, BorderLayout.CENTER);
         revalidate();
         repaint();
